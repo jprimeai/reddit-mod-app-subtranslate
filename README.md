@@ -2,6 +2,10 @@
 
 A [Devvit Web](https://developers.reddit.com/docs/capabilities/devvit-web/devvit_web_overview) mod tool that lets moderators translate Reddit posts and comments with AI. Translations are cached in Redis so repeat requests for the same content do not use API tokens.
 
+**Repository:** [github.com/jprimeai/reddit-mod-app-subtranslate](https://github.com/jprimeai/reddit-mod-app-subtranslate)
+
+Developed by **JPrime**.
+
 ## Features
 
 - **Post and comment menu action** — open the ⋮ menu on any post or comment and choose **Translate**
