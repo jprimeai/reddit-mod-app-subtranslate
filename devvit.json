@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "subtranslate",
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "permissions": {
+    "http": {
+      "enable": true,
+      "domains": [
+        "api.openai.com",
+        "generativelanguage.googleapis.com"
+      ]
+    },
+    "reddit": {
+      "enable": true,
+      "scope": "moderator"
+    },
+    "redis": true
+  },
+  "settings": {
+    "subreddit": {
+      "aiProvider": {
+        "type": "select",
+        "label": "AI provider",
+        "helpText": "Choose OpenAI-compatible APIs or Google Gemini.",
+        "options": [
+          {
+            "label": "OpenAI",
+            "value": "openai"
+          },
+          {
+            "label": "Google Gemini",
+            "value": "gemini"
+          }
+        ],
+        "defaultValue": "openai"
+      },
+      "apiSecret": {
+        "type": "string",
+        "label": "API secret",
+        "helpText": "Your OpenAI or Gemini API key for this subreddit."
+      },
+      "model": {
+        "type": "string",
+        "label": "Model",
+        "helpText": "Examples: gpt-4o-mini, gpt-4.1-mini, gemini-2.0-flash.",
+        "defaultValue": "gpt-4o-mini"
+      },
+      "targetLanguage": {
+        "type": "string",
+        "label": "Target language",
+        "helpText": "Language moderators translate content into, such as English or Spanish.",
+        "defaultValue": "English"
+      }
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Translate",
+        "description": "Translate this post or comment with AI",
+        "location": "post",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/translate"
+      }
+    ]
+  },
+  "forms": {
+    "translateForm": "/internal/form/translate-submit"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  },
+  "dev": {
+    "subreddit": "subtranslate_dev"
+  }
+}
